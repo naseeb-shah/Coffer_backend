@@ -7,7 +7,7 @@ const dataRouter = express.Router();
 dataRouter.get("/", async (req, res) => {
   try {
     const query=  req.query
-   const { page, limit }=query
+   let { page, limit }=query
 page=page?page:1
 
 let skip= page*10
