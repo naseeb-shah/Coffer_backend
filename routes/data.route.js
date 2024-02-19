@@ -1,13 +1,15 @@
 const express = require("express");
 const { DataModel } = require("../model/data.model");
 
+
 const dataRouter = express.Router();
 
 dataRouter.get("/", async (req, res) => {
   try {
     const query=  req.query
    const { page, limit }=query
-console.log(query)
+page=page?page:1
+
 let skip= page*10
     let data = await DataModel.find().skip(skip).limit(limit);
     res.send(data);
